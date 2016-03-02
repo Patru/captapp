@@ -13,6 +13,21 @@ reinventing the wheel constantly I put the jumble of things I chose to fit my ne
 2. rvm install 2.2.3
 3. rvm use 2.2.3
 4. bundle
-5. bundle exec rake db:migrate
-6. bundle exec puma
+5. rm db/*.db
+6. bundle exec rake db:migrate
+7. bundle exec puma
+8. surf to the URL http://localhost:9234/admin/new
+9. give email, name and password with digits and lower case and upper case (TODO: error handling currently not ideal)
+10.  bundle exec sequel sqlite://db/development.db (TODO: only now, should not be needed any more when finished, email not configured)
+10a  > require './models/admin.rb'
+10b  > Admin.last.login_path 
+11. prepend the output path with http://localhost:9234 in the browser
+12. login with the password that you defined in step #9
+
 (ctrl-c to stop it)
+
+
+## how to run the tests
+1. like above up to 4. (bundle)
+2. RACK_ENV=test bundle exec rake db:migrate  (or:  (export RACK_ENV=test ; bundle exec rake db:migrate) )
+3. bundle exec rake

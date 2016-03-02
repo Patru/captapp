@@ -6,6 +6,7 @@
 db/*.db
 log/*.log
 tmp/
+*~
 
 # config info that must not end up in public repos
 
