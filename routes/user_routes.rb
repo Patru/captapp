@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require_relative '../models/Admin'
+require_relative '../models/admin'
 require_relative '../models/user'
 require_relative '../views/admin/user/all'
 require_relative '../views/forbidden_request'
