@@ -3,7 +3,7 @@ require 'sequel/model'
 require 'forme'
 require 'shield'
 
-class User < Sequel::Model
+class Captain < Sequel::Model
   include Shield::Model
   plugin :forme
   plugin :validation_helpers
@@ -13,7 +13,7 @@ class User < Sequel::Model
   end
 
   def show_path
-    "/admin/user/#{id}"
+    "/admin/captain/#{id}"
   end
 
   def edit_path
