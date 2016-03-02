@@ -13,6 +13,7 @@ reinventing the wheel constantly I put the jumble of things I chose to fit my ne
 2. rvm install 2.2.3
 3. rvm use 2.2.3
 4. bundle
-5. bundle exec rake db:migrate
-6. bundle exec puma
+5. rm db/*.db
+6. bundle exec rake db:migrate
+7. bundle exec puma
 (ctrl-c to stop it)
