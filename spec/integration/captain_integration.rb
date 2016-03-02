@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require_relative 'integration_helper'
 
-class UserIntegration < IntegrationSpec
+class CaptainIntegration < IntegrationSpec
   describe 'as an admin' do
     before do
       Capybara.reset_sessions!    # make sure we loose all the cookies (putting this in after will prevent screenshots)
@@ -10,60 +10,60 @@ class UserIntegration < IntegrationSpec
     end
 
     it 'can access an empty index' do
-      visit '/admin/user/index'
-      current_path.must_equal '/admin/user/index'
-      page.must_have_title 'List of all users'
-      within 'table.users' do
+      visit '/admin/captain/index'
+      current_path.must_equal '/admin/captain/index'
+      page.must_have_title 'List of all captains'
+      within 'table.captains' do
         wont_have_css 'tr'
       end
     end
 
-    it 'can create a new user and show it' do
-      visit '/admin/user/index'
-      click_link 'New User'
-      page.must_have_title 'Create a new user'
-      within 'form.user' do
-        fill_in 'Name', with:'first user'
-        fill_in 'Email:', with:'first@user.org'
+    it 'can create a new captain and show it' do
+      visit '/admin/captain/index'
+      click_link 'New Captain'
+      page.must_have_title 'Create a new captain'
+      within 'form.captain' do
+        fill_in 'Name', with:'first captain'
+        fill_in 'Email:', with:'first@captain.org'
         fill_in 'Password', with: 'SchwapSchu'
         click_button 'Create'
       end
-      current_path.must_match /\/admin\/user/
-      page.must_have_title 'Details for user first user'
+      current_path.must_match /\/admin\/captain/
+      page.must_have_title 'Details for captain first captain'
       within 'nav.item' do
         must_have_link 'Edit'
       end
     end
 
-    describe 'with an existing user' do
+    describe 'with an existing captain' do
       before do
-        @usr = User.new(name: 'test user', email:'test@user.org', password:'123abcDE')
-        @usr.save
+        @cpt = Captain.new(name: 'test captain', email:'test@captain.org', password:'123abcDE')
+        @cpt.save
       end
 
-      it 'can edit the users name' do
-        visit @usr.show_path
+      it 'can edit the captains name' do
+        visit @cpt.show_path
         click_link 'Edit'
         within 'form' do
-          must_have_field 'Name', with:@usr.name
+          must_have_field 'Name', with:@cpt.name
           fill_in 'Name', with:'new name'
           click_button 'Save'
         end
-        current_path.must_match '/admin/user'
-        within 'table.user' do
+        current_path.must_match '/admin/captain'
+        within 'table.captain' do
           must_have_text 'new name'
-          wont_have_text 'test user'
+          wont_have_text 'test captain'
         end
       end
 
       it 'validates the presence of the name' do
-        visit @usr.edit_path
+        visit @cpt.edit_path
         within 'form' do
           fill_in 'Name', with:''
           click_button 'Save'
         end
         within 'div.flash .error' do
-          must_have_text 'user could not be saved'
+          must_have_text 'captain could not be saved'
         end
         within 'div.error-messages' do
           must_have_text 'name is not present'
@@ -71,7 +71,7 @@ class UserIntegration < IntegrationSpec
       end
 
       it 'validates the presence of the email' do
-        visit @usr.edit_path
+        visit @cpt.edit_path
         within 'form' do
           fill_in 'Email', with:''
           click_button 'Save'
