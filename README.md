@@ -7,3 +7,12 @@ reinventing the wheel constantly I put the jumble of things I chose to fit my ne
 2. change it
 3. create your github project for it
 4. commit it
+
+## how to run it
+1. rvm (or the like)
+2. rvm install 2.2.3
+3. rvm use 2.2.3
+4. bundle
+5. bundle exec rake db:migrate
+6. bundle exec puma
+(ctrl-c to stop it)
