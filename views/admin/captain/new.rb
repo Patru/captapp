@@ -1,16 +1,16 @@
 # encoding: UTF-8
-require_relative 'user'
+require_relative 'captain'
 
 module Views
   module Admin
-    module User
-      class New < User
+    module Captain
+      class New < Captain
         def page_title
-          'Create a new user'
+          'Create a new captain'
         end
 
         def body_content
-          form('/admin/user')
+          form('/admin/captain')
         end
       end
     end

@@ -3,19 +3,19 @@ require_relative '../../page'
 
 module Views
   module Admin
-    module User
+    module Captain
       class Show < Page
-        needs :user
-        def user_detail
-          table class:'user' do
+        needs :captain
+        def captain_detail
+          table class:'captain' do
             tbody do
               tr do
                 td 'Name:'
-                td user.name
+                td captain.name
               end
               tr do
                 td 'Email:'
-                td user.email
+                td captain.email
               end
             end
           end
@@ -25,12 +25,12 @@ module Views
           nav 'class' =>'item' do
             ul do
               li do
-                a href:user.edit_path do
+                a href:captain.edit_path do
                   text 'Edit'
                 end
               end
 =begin            li do
-              a href:user.delete_path do
+              a href:captain.delete_path do
                 text 'Delete'
               end
 =end
@@ -39,11 +39,11 @@ module Views
         end
 
         def page_title
-          "Details for user #{user.name}"
+          "Details for captain #{captain.name}"
         end
 
         def body_content
-          user_detail
+          captain_detail
           item_navigation
         end
       end

@@ -1,25 +1,25 @@
 # encoding: UTF-8
-require_relative 'user'
+require_relative 'captain'
 
 module Views
   module Admin
-    module User
-      class Edit < User
+    module Captain
+      class Edit < Captain
         def page_title
-          "Edit user #{user.name}"
+          "Edit captain #{captain.name}"
         end
 
         def body_content
-          unless user.errors.empty?
+          unless captain.errors.empty?
             div :class => 'error-messages' do
               ul do
-                user.errors.full_messages.each do |message|
+                captain.errors.full_messages.each do |message|
                   li message
                 end
               end
             end
           end
-          form(user.show_path, 'Save', 'put')
+          form(captain.show_path, 'Save', 'put')
         end
       end
     end

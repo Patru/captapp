@@ -3,24 +3,24 @@
 
 module Views
   module Admin
-    module User
+    module Captain
       class Index < Page
-        needs :users
+        needs :captains
 
         def page_title
-          'List of all users'
+          'List of all captains'
         end
         def body_content
           h1 page_title
 
-          users_table
-          a href:'/admin/user/new' do
-            text 'New User'
+          captains_table
+          a href:'/admin/captain/new' do
+            text 'New Captain'
           end
         end
 
-        def users_table
-          table 'class' => 'users' do
+        def captains_table
+          table 'class' => 'captains' do
             thead do
               th 'Name'
               th 'E-mail'
@@ -29,14 +29,14 @@ module Views
               end
             end
             tbody do
-              users.each do |user|
+              captains.each do |captain|
                 tr do
                   td do
-                    #a href:user.show_path, title: 'show details' do
-                      text user.name
+                    #a href:captain.show_path, title: 'show details' do
+                      text captain.name
                     #end
                   end
-                  td user.email
+                  td captain.email
                   td do
                     #a href:admin.edit_path, title: 'edit' do
                       text 'edit'
