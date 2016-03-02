@@ -4,6 +4,6 @@ reinventing the wheel constantly I put the jumble of things I chose to fit my ne
 ## How to use it
 1. clone it
   check out [http://stackoverflow.com/questions/160608/do-a-git-export-like-svn-export] to know how
-1. change it
-1. create your github project for it
-1. commit it
+2. change it
+3. create your github project for it
+4. commit it
